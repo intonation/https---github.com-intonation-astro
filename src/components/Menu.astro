@@ -1,0 +1,32 @@
+<button
+  class="menu"
+  type="button"
+  aria-expanded="false"
+  aria-controls="main-menu"
+  aria-label="Open menu"
+>
+  <span class="menu-icon" aria-hidden="true">
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+  </span>
+  <span class="menu-text" aria-hidden="true">
+    <span class="menu-label menu-label--open">Menu</span>
+    <span class="menu-label menu-label--close">Close</span>
+  </span>
+</button>
+
+<script>
+  const menuButtons = document.querySelectorAll('.menu');
+
+  menuButtons.forEach((menuButton) => {
+    if (menuButton.dataset.menuBound === 'true') return;
+    menuButton.dataset.menuBound = 'true';
+
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      menuButton.setAttribute('aria-label', isExpanded ? 'Open menu' : 'Close menu');
+    });
+  });
+</script>

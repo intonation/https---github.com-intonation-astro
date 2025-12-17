@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Jungka Book';
+    src: url('Jungka-Book.woff2') format('woff2'),
+        url('Jungka-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jungka';
+    src: url('Jungka-Regular.woff2') format('woff2'),
+        url('Jungka-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jungka';
+    src: url('Jungka-Bold.woff2') format('woff2'),
+        url('Jungka-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

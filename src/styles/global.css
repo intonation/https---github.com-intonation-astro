@@ -2,24 +2,228 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Jungka Book';
+    src: url('../fonts/Jungka-Book.woff2') format('woff2'),
+        url('Jungka-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jungka';
+    src: url('../fonts/Jungka-Regular.woff2') format('woff2'),
+        url('Jungka-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jungka Bold';
+    src: url('../fonts/Jungka-Bold.woff2') format('woff2'),
+        url('Jungka-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 html {
   background-color: #f1f5f9;
-  font-family: sans-serif;
+ 
 }
 
 body {
   margin: 0 auto;
   width: 100%;
   max-width: 80ch;
-  padding: 1rem;
+  padding: 1.125rem;
   line-height: 1.5;
+  font-family: 'Jungka', 'Inter', system-ui, sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-h1 {
+h1, h2 {
   margin: 1rem 0;
-  font-size: 2.5rem;
+  font-size: 1.125rem;
+}
+
+p, li {
+  font-size: 1.125rem;
+}
+/* nav styles */
+
+.menu {
+  background-color: #353453;
+  border: none;
+  color: #fbf7f7;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-text {
+  display: grid;
+}
+
+.menu-text > .menu-label {
+  grid-area: 1 / 1;
+}
+
+.menu-icon {
+  position: relative;
+  width: 1.25rem;
+  height: 1rem;
+  display: inline-block;
+}
+
+.menu-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 999px;
+  transition: transform 180ms ease, top 180ms ease, opacity 120ms ease;
+}
+
+.menu-bar:nth-child(1) {
+  top: 0;
+}
+
+.menu-bar:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-bar:nth-child(3) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.menu-label {
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.menu[aria-expanded="false"] .menu-label--open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu[aria-expanded="false"] .menu-label--close {
+  opacity: 0;
+  transform: translateY(2px);
+  pointer-events: none;
+}
+
+.menu[aria-expanded="true"] .menu-label--open {
+  opacity: 0;
+  transform: translateY(-2px);
+  pointer-events: none;
+}
+
+.menu[aria-expanded="true"] .menu-label--close {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu[aria-expanded="true"] .menu-bar:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menu[aria-expanded="true"] .menu-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu[aria-expanded="true"] .menu-bar:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.nav-links {
+  width: 100%;
+  display: none;
+  margin: 0;
+ 
+}
+
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #282222;
+  background-color: aquamarine;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background-color: #ff9776;
+  
+}
+
+.menu[aria-expanded="true"] ~ .nav-links {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f1f5f9;
+}
+
+.menu[aria-expanded="true"] ~ .nav-links a {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .menu[aria-expanded="true"] ~ .nav-links {
+    position: static;
+    inset: auto;
+    z-index: auto;
+    display: block;
+    flex-direction: initial;
+    justify-content: initial;
+    align-items: initial;
+    gap: 0;
+    background-color: transparent;
+  }
+
+  .menu[aria-expanded="true"] ~ .nav-links a {
+    background-color: aquamarine;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+    .menu {
+    display: none;
+  }
 }
