@@ -1,11 +1,12 @@
 ---
-import Menu from './components/Menu.astro';
-import Navigation from './Navigation.astro';
+import Menu from './Menu.astro';
 ---
 
-<div id="main-menu" class="nav-links">
-
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
-</div>
+<nav aria-label="Primary">
+  <Menu />
+  <div id="main-menu" class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+  </div>
+</nav>
